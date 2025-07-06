@@ -4,20 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="description" content="神楽のホームページです。">
+  <title>神楽のホームぺージ</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-675YDLXBYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-675YDLXBYR');
+  </script>
 </head>
 
 <body>
-  <section>
-    <img src="S__215629897.jpg" alt="神楽の画像" width="500" height="500">
-  </section>
-  <section>
-    <h1>
-      <a href="https://reality.app/profile/645ca055?adj_t=8ogcewh_z9yhix5" target="_blank">神楽</a> <small>kamura</small>
-    </h1>
-    <p>後輩系姉さん。関西弁をしゃべる。</p>
-  </section>
+  <header>
 
+  </header>
+  <div>
+    <img src="S__215629897.jpg" alt="神楽の画像" width="300" height="300">
+  </div>
+  <div>
+    <a href="https://reality.app/profile/645ca055?adj_t=8ogcewh_z9yhix5" target="_blank"
+      onclick="gtag('event', 'click', { 'event_category': 'link', 'event_label': '神楽の画像' });">神楽<small>kamura</small></a>
+
+  </div>
+  <p>後輩系姉さん。関西弁をしゃべる。</p>
+
+  <footer>
+    <div>
+      <small>html勉強中！</small>
+    </div>
+  </footer>
 </body>
 
 </html>
