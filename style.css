@@ -3,13 +3,30 @@
 /* 段落のスタイル */
 body {
   margin: 0;
-  background-color: #555555;
+  background-color: #e7e7e7;
   font-family: sans-serif;
 }
 
+header{
+  height: 160px;
+  background: url(LOGO.webp) center/cover rgb(155, 155, 155);
+}
+
+h1{
+  margin: 32px;
+  font-size: 22px;
+  line-height: 50%;
+  color: rgb(72, 51, 77);
+  text-align: center;
+}
+
 img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   display: block;
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 section {
@@ -19,13 +36,15 @@ section {
   max-width: 90vw;
   margin: 16px auto;
   text-align: center;
-  color: rgb(127, 53, 197);
+  color: rgb(80, 80, 80);
   font-style: bold;
-  background-color: rgb(134, 134, 134);
+  background-color: rgb(214, 214, 214);
   box-shadow: 0 0 10px rgb(156, 149, 155);
 }
 
 a {
+  
+  color: inherit;
   font-size: large;
   display: block;
   margin: 8px 0 0 0;
@@ -46,7 +65,7 @@ p {
 }
 
 footer {
-  color: rgb(192, 141, 240);
+  color: rgb(83, 83, 83);
   display: block;
   margin: 16px auto;
   width: fit-content;
