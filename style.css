@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
 /* 段落のスタイル */
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
+}
+
+body {
   background-color: #e7e7e7;
   font-family: sans-serif;
+  font-weight: normal;
 }
 
 header{
@@ -12,15 +17,16 @@ header{
   background: url(LOGO.webp) center/cover rgb(44 40 91);
 }
 
-h1{
-  margin: 32px;
+.title-1{
+  margin: 16px;
   font-size: 22px;
   color: rgb(139 67 138);
   text-align: center;
+  line-height: 2;
   border-bottom: 2px solid;
 }
 
-img {
+.kamura-icon {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -30,19 +36,19 @@ img {
 }
 
 .top {
-  border: 2px solid rgb(140 194 35);
+  border: 2px solid rgb(139 67 138);
   border-radius: 16px;
   width: fit-content;
   max-width: 90vw;
   margin: 16px auto;
   text-align: center;
   color: rgb(80, 80, 80);
-  font-style: bold;
+  font-weight: normal;
   background-color: rgb(214, 214, 214);
   box-shadow: 0 0 10px rgb(182, 176, 181);
 }
 
-a {
+.top a {
 /* text-decoration: none; */
   color: inherit;
   font-size: large;
@@ -50,6 +56,23 @@ a {
   margin: 8px 0 0 0;
 }
 
+.read-0{
+  color: rgb(80, 80, 80);
+}
+
+.x {
+  display: block;
+  border-radius:16px;
+  background-color: rgb(214, 214, 214);
+  padding:8px;
+  text-align: center;
+  color: inherit;
+  margin: 0 auto;
+  width: 50%;
+  min-width: 280px;
+  max-width: 17rem;
+
+}
 p {
   margin: 0 auto;
   width: 50%;
@@ -58,10 +81,8 @@ p {
   padding: 8px;
 }
 
-@media (max-width: 600px) {
-  p {
-    width: 90%;
-  }
+.read{
+  max-width: 17rem;
 }
 
 footer {
