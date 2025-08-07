@@ -1,93 +1,148 @@
 @charset "UTF-8";
 
-/* 段落のスタイル */
-*{
-  box-sizing: border-box;
-  margin: 0;
+html {
+  height: 100%;
 }
 
 body {
-  background-color: #e7e7e7;
+  height: 100%;
+  border: 1px solid blue;
+  margin: 0;
+  font-weight: normal;
+  color: rgb(80, 80, 80);
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: rgb(224, 224, 224); 
+  height: 100px;
+  border-bottom: 1px solid;
+}
+
+.div1 {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.div1 h1 {
+  color: rgb(80, 80, 80);          /* 黒など好みの色に */
+  font-weight: normal;    /* 太字に戻す */
+  font-size: 32px;      /* サイズもお好みで */
   font-family: sans-serif;
-  font-weight: normal;
 }
 
-header{
-  height: 160px;
-  background: url(LOGO.webp) center/cover rgb(44 40 91);
-}
-
-.title-1{
-  margin: 16px;
-  font-size: 22px;
-  color: rgb(139 67 138);
+.div1 h1 {
+  margin: 0;
+  font-size: 30px;
   text-align: center;
-  line-height: 2;
-  border-bottom: 2px solid;
 }
 
-.kamura-icon {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;
+/* ナビゲーションリンク（右下） */
+.nav-list {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  list-style: none;
+  display: flex;
+  gap: 16px;
 }
 
-.top {
-  border: 2px solid rgb(139 67 138);
-  border-radius: 16px;
-  width: fit-content;
-  max-width: 90vw;
-  margin: 16px auto;
-  text-align: center;
+.nav-list li a {
+  text-decoration: none;
   color: rgb(80, 80, 80);
   font-weight: normal;
-  background-color: rgb(214, 214, 214);
-  box-shadow: 0 0 10px rgb(182, 176, 181);
 }
 
-.top a {
-/* text-decoration: none; */
-  color: inherit;
-  font-size: large;
-  display: block;
-  margin: 8px 0 0 0;
+.nav-list li a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
 }
 
-.read-0{
-  color: rgb(80, 80, 80);
+/* -----------------------------  */
+/* ここまでヘッダー */
+
+h2{
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 200px;
+  font-weight: normal;
+  height: 50px;
+  background-color: rgb(184, 184, 184);
 }
 
-.x {
-  display: block;
-  border-radius:16px;
-  background-color: rgb(214, 214, 214);
-  padding:8px;
-  text-align: center;
-  color: inherit;
-  margin: 0 auto;
-  width: 50%;
-  min-width: 280px;
-  max-width: 17rem;
-
+.section2 {
+  display: flex;
+  height: 550px;
 }
-p {
-  margin: 0 auto;
-  width: 50%;
-  min-width: 280px;
-  min-height: 32px;
+
+
+.main-right {
+  flex: 1;
+  background-color: #f0f0f0; /* オプション */
+}
+
+h3{
+  margin: 0 0 4px 0;
   padding: 8px;
+  text-align: center;
+  font-weight: normal;
+  border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 .read{
-  max-width: 17rem;
+text-align: center;
+  padding: 8px;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 16px 0 0 0;
 }
 
-footer {
-  color: rgb(83, 83, 83);
+.read>li{
+  list-style: none;
+  margin: 4px;
+  padding: 2px
+}
+
+.x-p{
+  margin-top: 4px;
+  text-align: center;
+}
+
+.x{
   display: block;
-  margin: 16px auto;
-  width: fit-content;
+  text-align: center;
+  color: rgb(123, 56, 150);
+}
+
+.main-left {
+  flex: 1;
+  position: relative;
+  background: 
+    linear-gradient(rgba(209, 209, 209, 0.8), rgba(189, 189, 189, 0.8)), 
+    url("LOGO.webp") center/cover no-repeat;
+}
+
+.overlay-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-130%,-60%);
+  width: 300px;
+  height: auto;
+  z-index: 1;
 }
