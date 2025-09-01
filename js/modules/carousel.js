@@ -1,85 +1,61 @@
 import { $ } from './utils.js';
 
 export function initCarousel() {
-  const carousel = $(".wrap");
-  if (!carousel) return;
+  const carousel = document.querySelector('.carousel');
+const track = document.querySelector('.carousel-track');
 
-  const items = Array.from(carousel.children);
+// 複製して無限ループ
+track.innerHTML += track.innerHTML;
+const originalWidth = track.scrollWidth / 2;
 
-  // 複製してループ用に追加
-  items.forEach(item => {
-    const clone = item.cloneNode(true);
-    carousel.appendChild(clone);
-  });
+let isDown = false;
+let startX;
+let scrollLeft;
+let velocity = 0;
 
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+const friction = 0.9;   // 慣性減衰
+const autoSpeed = 0.5;  // 自動スクロール速度
+const dragFactor = 0.3; // ドラッグの強さ
+const maxVelocity = 30; // 最大速度
 
-  // 慣性スクロール用
-  let wheelVelocity = 0;
-  const friction = 0.95;
-  const autoSpeed = 0.5; // 自動スライド速度
+// マウスドラッグ
+carousel.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX;
+  scrollLeft = carousel.scrollLeft;
+  velocity = 0;
+  carousel.style.cursor = "grabbing";
+});
 
-  // ドラッグ開始
-  function startDrag(e) {
-    isDown = true;
-    carousel.classList.add("dragging");
-    startX = e.pageX !== undefined ? e.pageX - carousel.offsetLeft : e.touches[0].pageX - carousel.offsetLeft;
-    scrollLeft = carousel.scrollLeft;
+window.addEventListener('mouseup', () => {
+  isDown = false;
+  carousel.style.cursor = "grab";
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  const x = e.pageX - startX;
+  carousel.scrollLeft = scrollLeft - x;
+  velocity = (x * dragFactor);
+});
+
+// ホイール操作
+carousel.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  velocity += e.deltaY * 0.3; // 縦スクロールを横スクロールに変換
+});
+
+// アニメーションループ
+function animate() {
+  if (!isDown) {
+    carousel.scrollLeft += autoSpeed + velocity;
+    velocity *= friction;
+
+    // 無限ループ処理
+    if (carousel.scrollLeft >= originalWidth) carousel.scrollLeft -= originalWidth;
+    if (carousel.scrollLeft < 0) carousel.scrollLeft += originalWidth;
   }
-
-  function dragMove(e) {
-    if (!isDown) return;
-    const x = e.pageX !== undefined ? e.pageX - carousel.offsetLeft : e.touches[0].pageX - carousel.offsetLeft;
-    carousel.scrollLeft = scrollLeft - (x - startX) * 2;
-  }
-
-  function endDrag() {
-    isDown = false;
-    carousel.classList.remove("dragging");
-  }
-
-  // マウスイベント
-  carousel.addEventListener("mousedown", startDrag);
-  carousel.addEventListener("mousemove", dragMove);
-  carousel.addEventListener("mouseup", endDrag);
-  carousel.addEventListener("mouseleave", endDrag);
-
-  // タッチイベント
-  carousel.addEventListener("touchstart", startDrag);
-  carousel.addEventListener("touchmove", dragMove);
-  carousel.addEventListener("touchend", endDrag);
-
-  // マウスホイールで横スクロール（慣性）
-  carousel.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    wheelVelocity += e.deltaY * 0.5;
-  });
-
-  const originalWidth = carousel.scrollWidth / 2;
-
-  function animate() {
-    if (!isDown) {
-      // 自動スライド + ホイール慣性を合算
-      const move = autoSpeed + wheelVelocity;
-      carousel.scrollLeft += move;
-
-      // 減衰処理
-      wheelVelocity *= friction;
-    }
-
-    // 無限ループ
-    if (carousel.scrollLeft >= originalWidth) {
-      carousel.scrollLeft -= originalWidth;
-    } else if (carousel.scrollLeft < 0) {
-      carousel.scrollLeft += originalWidth;
-    }
-
-    requestAnimationFrame(animate);
-  }
-
   requestAnimationFrame(animate);
-
-  console.log("カルーセル初期化完了（自動スライド + ホイール慣性）");
+}
+animate();
 }

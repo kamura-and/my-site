@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head class="page-header wrapper">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KAMURA'S SITE</title>
-  <meta name="description" content="神楽のプロフィールサイト" <!-- reset.css ress -->
+  <meta name="description" content="神楽のプロフィールサイト">
+  <!-- reset.css ress -->
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+
   <!-- フォント -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=WDXL+Lubrifont+JP+N&display=swap"
     rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="styleseet.css">
+  <link rel="stylesheet" href="stylesheet.css">
+
   <!-- 共通 JS -->
   <script type="module" src="js/main.js"></script>
+
   <!-- ファビコン -->
-  <link rel="icon" type="png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
-
   <div id="home" class="big-bg">
     <header class="page-header">
       <h1 class="logo-all">
@@ -47,31 +49,26 @@
     </div>
 
     <!-- カルーセル -->
-     <section class="carousel">
-    <div class="wrap">
-      <div class="item">
-        <img src="01.webp" alt="神楽立ち絵">
-        <p>01</p>
-      </div>
-      <div class="item">
-        <img src="04.webp" alt="神楽立ち絵">
-        <p>02</p>
-      </div>
-      <div class="item">
-        <img src="03.webp" alt="神楽立ち絵">
-        <p>03</p>
-      </div>
-      <div class="item">
-        <img src="05.webp" alt="神楽立ち絵">
-        <p>04</p>
-      </div>
-      <div class="item">
-        <img src="02.webp" alt="神楽立ち絵">
-        <p>05</p>
+    <div class="carousel">
+      <div class="carousel-track">
+        <div class="carousel-item">
+          <img src="01.webp" alt="神楽の画像">
+        </div>
+        <div class="carousel-item">
+          <img src="04.webp" alt="神楽の画像">
+        </div>
+        <div class="carousel-item">
+          <img src="03.webp" alt="神楽の画像">
+        </div>
+        <div class="carousel-item">
+          <img src="02.webp" alt="神楽の画像">
+        </div>
+        <div class="carousel-item">
+          <img src="05.webp" alt="神楽の画像">
+        </div>
       </div>
     </div>
-    </section>
-    <!-- ここまで背景 -->
+
   </div>
 </body>
 

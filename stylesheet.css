@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/* ALL */
+html {
+  font-size: 100%;
+}
+
+body {
+  line-height: 1.7;
+  color: #432;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* header */
+header {
+  background-color: rgb(209, 209, 209);
+}
+
+.page-header .wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.logo{
+  margin: 10px;
+  max-height: 100px;
+}
+
+.logo-all {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+}
+
+.main-nav {
+  font-family: "WDXL Lubrifont JP N";
+  font-weight: 800;
+  letter-spacing: 0.3rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 0 20px 0 0;
+  padding: 0 0 8px 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-nav li {
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.main-nav a {
+  color: rgb(144, 88, 146);
+}
+
+.main-nav a:hover {
+  color: rgb(238, 238, 238);
+}
+
+/* home */
+.home-content {
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+.home-content p {
+  font-size: 1.125rem;
+  font-family: "WDXL Lubrifont JP N";
+  letter-spacing: 0.5rem;
+  color: #fff;
+}
+
+/* 見出し */
+.kamura-logo{
+  line-height: 0;
+  margin: 0;
+}
+
+.page-title {
+  margin: 10px 0;
+  font-size: 5rem;
+  font-family: "WDXL Lubrifont JP N";
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: linear-gradient(45deg, rgb(147, 68, 150), #a4c9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ボタン */
+.button {
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 5px;
+  padding: 9px 25px;
+  font-family: "WDXL Lubrifont JP N";
+  letter-spacing: 0.3rem;
+  background: linear-gradient(45deg, rgb(147, 68, 150), #a4c9ff);
+}
+
+.button:hover {
+  background: rgb(238, 238, 238);
+  color: rgb(144, 88, 146);
+  font-weight: 500;
+}
+
+/* 背景画像大 */
+#home {
+  background-image: url(back_01.webp);
+  min-height: 100vh;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: 100px;
+  background-color: rgb(155, 155, 155);
+  background-blend-mode: multiply;
+}
+
+#home .page-title {
+  text-transform: none;
+}
+
+/* カルーセル全体 */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: grab;
+}
+
+.carousel-track {
+  display: flex;
+}
+
+.carousel-item {
+  flex: 0 0 200px; /* アイテムの幅 */
+ max-width: 40%;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-right: 10px;
+}
