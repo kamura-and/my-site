@@ -1,76 +1,78 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
+<head class="page-header wrapper">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神楽のホームぺージ</title>
-  <link rel="icon" href="favicon.png">
-  <link rel="stylesheet" href="style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-675YDLXBYR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  <title>KAMURA'S SITE</title>
+  <meta name="description" content="神楽のプロフィールサイト" <!-- reset.css ress -->
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
-    gtag('config', 'G-675YDLXBYR');
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=WDXL+Lubrifont+JP+N&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styleseet.css">
+  <!-- 共通 JS -->
+  <script type="module" src="js/main.js"></script>
+  <!-- ファビコン -->
+  <link rel="icon" type="png" href="favicon.png">
 </head>
 
 <body>
-  <header>
-    <div class="div1">
-      <a href="https://reality.app/profile/645ca055?adj_t=8ogcewh_z9yhix5" target="_blank"
-        onclick="gtag('event', 'click', { 'event_category': 'link', 'event_label': '神楽の画像' });">
-        <h1><ruby>神楽<rt>kamura</rt></ruby></h1>
-      </a>
-      <ul class="nav-list">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Illustration</a></li>
-      </ul>
-    </div>
-  </header>
-<main>
-  <section class="section1">
-    <h2>About</h2>
-  </section>
-  <section class="section2">
-  <div class="main-left"></div>
-  <div class="main-right">
-    <h3>かむら</h3>
- <p class="read">
-後輩系姉さん。<br>
-関西弁をしゃべる
-</p>
- <p class="read">
-めちゃおばか <br>
-主に雑談と歌、たまにゲーム！<br> 今後は企画配信もやりたいね🫳
-<br>
-✩•¨•.¸¸👾 ✩•¨•.¸¸🪡 ✩•¨•.¸¸💜 ✩•¨•.¸¸🖤
-  </p>
- <P class="x-p">
-Xでは絵や日常など<a class="x" href="https://x.com/K_M_R_a_0" target="_blank"> @K_M_R_a_0 
-  </a>
-</p>
- <ul class="read">
- <li>【好きなもの】</li>
- <li>Vtuber▶宝鐘マリン </li>
- <li>音楽▶Ado / 米津玄師 / 懐メロ </li>
- <li>アニメ▶NANA / ドラゴンボール / ディズニー</li>
- <li>その他▶服 / イラスト </li> 
- </ul>
-  </div>
-  <img src="kamura.webp" alt="神楽の画像" class="overlay-image">
-  </section>
-  <section class="section3">
-    <h2>Illustration</h2>
-  </section>
-</main>
-  </main>
-  <footer>
 
-  </footer>
+  <div id="home" class="big-bg">
+    <header class="page-header">
+      <h1 class="logo-all">
+        <a href="index.html"><img src="LOGO.webp" class="logo" alt="KAMURAのロゴ"></a>
+      </h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="">工事中</a></li>
+          <li><a href="">工事中</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- home -->
+    <div class="home-content wrapper">
+      <p class="kamura-logo">Kamura</p>
+      <h2 class="page-title">神楽</h2>
+      <a class="button" href="https://reality.app/profile/645ca055?adj_t=8ogcewh_z9yhix5">REALITY</a>
+    </div>
+
+    <!-- カルーセル -->
+     <section class="carousel">
+    <div class="wrap">
+      <div class="item">
+        <img src="01.webp" alt="神楽立ち絵">
+        <p>01</p>
+      </div>
+      <div class="item">
+        <img src="04.webp" alt="神楽立ち絵">
+        <p>02</p>
+      </div>
+      <div class="item">
+        <img src="03.webp" alt="神楽立ち絵">
+        <p>03</p>
+      </div>
+      <div class="item">
+        <img src="05.webp" alt="神楽立ち絵">
+        <p>04</p>
+      </div>
+      <div class="item">
+        <img src="02.webp" alt="神楽立ち絵">
+        <p>05</p>
+      </div>
+    </div>
+    </section>
+    <!-- ここまで背景 -->
+  </div>
 </body>
 
 </html>
