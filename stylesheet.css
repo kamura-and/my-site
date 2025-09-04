@@ -135,24 +135,19 @@ header {
 /* カルーセル全体 */
 .carousel {
   width: 100%;
-  overflow-x: scroll;   /* 横スクロールを有効化 */
-  overflow-y: hidden;   /* 縦方向は隠す */
-  white-space: nowrap;
+  overflow: hidden; /* ← もうスクロールバー不要 */
   cursor: grab;
-  scroll-behavior: auto; /* JSで制御しやすくする */
-  -webkit-overflow-scrolling: auto; /* iOSの慣性スクロール無効化 */
 }
 
 .carousel-track {
   display: flex;
+  will-change: transform; /* iOSでスムーズにする最適化 */
+  transition: none;       /* JS制御なのでCSSトランジション不要 */
 }
 
 .carousel-item {
-  flex: 0 0 200px; /* アイテムの幅 */
+  flex: 0 0 200px; /* アイテム幅固定 */
   max-width: 40%;
   display: inline-block;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
   margin-right: 10px;
 }
