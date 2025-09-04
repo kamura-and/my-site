@@ -57,10 +57,11 @@ export function initCarousel() {
 
   carousel.addEventListener('touchmove', (e) => {
     if (!isDown) return;
+    e.preventDefault(); // スマホでの縦スクロールを無効化して横だけにする
     const x = e.touches[0].pageX - startX;
     carousel.scrollLeft = scrollLeft - x;
     velocity = (x * dragFactor);
-  });
+  }, { passive: false });
 
   // -------------------
   // ホイール操作 (PCのみ有効)
@@ -79,9 +80,14 @@ export function initCarousel() {
       velocity *= friction;
 
       // 無限ループ処理
-      if (carousel.scrollLeft >= originalWidth) carousel.scrollLeft -= originalWidth;
-      if (carousel.scrollLeft < 0) carousel.scrollLeft += originalWidth;
+      if (carousel.scrollLeft >= originalWidth) {
+        carousel.scrollLeft -= originalWidth;
+      }
+      if (carousel.scrollLeft < 0) {
+        carousel.scrollLeft += originalWidth;
+      }
     }
+
     requestAnimationFrame(animate);
   }
   animate();
