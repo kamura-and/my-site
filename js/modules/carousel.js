@@ -1,77 +1,61 @@
-// carousel.js
-let menuOpenFunc;
-
-export function setMenuOpenFunction(fn) {
-  menuOpenFunc = fn;
-}
+import { $ } from './utils.js';
 
 export function initCarousel() {
   const carousel = document.querySelector('.carousel');
-  const track = document.querySelector('.carousel-track');
-  if (!carousel || !track) return;
+const track = document.querySelector('.carousel-track');
 
-  // 複製で無限ループ
-  track.innerHTML += track.innerHTML;
+// 複製して無限ループ
+track.innerHTML += track.innerHTML;
+const originalWidth = track.scrollWidth / 2;
 
-  // 画像ロード後に幅を取得
-  const items = track.querySelectorAll('.carousel-item');
-  let itemWidth = items[0].offsetWidth + 10;
-  let totalWidth = itemWidth * items.length;
+let isDown = false;
+let startX;
+let scrollLeft;
+let velocity = 0;
 
-  let isDown = false;
-  let startX;
-  let currentX = 0;
-  let velocity = 0;
+const friction = 0.9;   // 慣性減衰
+const autoSpeed = 0.5;  // 自動スクロール速度
+const dragFactor = 0.3; // ドラッグの強さ
+const maxVelocity = 30; // 最大速度
 
-  const friction = 0.9;
-  const autoSpeed = 0.5;
-  const dragFactor = 0.3;
+// マウスドラッグ
+carousel.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX;
+  scrollLeft = carousel.scrollLeft;
+  velocity = 0;
+  carousel.style.cursor = "grabbing";
+});
 
-  // PC
-  carousel.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - currentX;
-    velocity = 0;
-  });
-  window.addEventListener('mouseup', () => isDown = false);
-  window.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    currentX = e.pageX - startX;
-    velocity = e.movementX * dragFactor;
-  });
+window.addEventListener('mouseup', () => {
+  isDown = false;
+  carousel.style.cursor = "grab";
+});
 
-  // SP
-  carousel.addEventListener('touchstart', (e) => {
-    isDown = true;
-    startX = e.touches[0].pageX - currentX;
-    velocity = 0;
-  });
-  carousel.addEventListener('touchend', () => isDown = false);
-  carousel.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - startX;
-    velocity = (x - currentX) * dragFactor;
-    currentX = x;
-  }, { passive: false });
+window.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  const x = e.pageX - startX;
+  carousel.scrollLeft = scrollLeft - x;
+  velocity = (x * dragFactor);
+});
 
-  function animate() {
-    if (!isDown && !(menuOpenFunc && menuOpenFunc())) {
-      currentX -= autoSpeed + velocity;
-      velocity *= friction;
-    }
+// ホイール操作
+carousel.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  velocity += e.deltaY * 0.3; // 縦スクロールを横スクロールに変換
+});
 
-    if (currentX <= -totalWidth / 2) currentX = 0;
-    if (currentX > 0) currentX = -totalWidth / 2;
+// アニメーションループ
+function animate() {
+  if (!isDown) {
+    carousel.scrollLeft += autoSpeed + velocity;
+    velocity *= friction;
 
-    track.style.transform = `translateX(${currentX}px)`;
-    requestAnimationFrame(animate);
+    // 無限ループ処理
+    if (carousel.scrollLeft >= originalWidth) carousel.scrollLeft -= originalWidth;
+    if (carousel.scrollLeft < 0) carousel.scrollLeft += originalWidth;
   }
-
-  // 画像ロード後に初期化
-  window.addEventListener('load', () => {
-    itemWidth = items[0].offsetWidth + 10;
-    totalWidth = itemWidth * items.length;
-    animate();
-  });
+  requestAnimationFrame(animate);
+}
+animate();
 }
