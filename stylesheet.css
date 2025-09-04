@@ -20,7 +20,7 @@ img {
 
 /* header */
 header {
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(213, 198, 219);
 }
 
 .page-header .wrapper {
@@ -123,8 +123,8 @@ header {
   min-height: 100vh;
   background-repeat: repeat;
   background-position: 0 0;
-  background-size: 100px;
-  background-color: rgb(155, 155, 155);
+  background-size: 50px;
+  background-color: rgb(130, 105, 139);
   background-blend-mode: multiply;
 }
 
@@ -135,7 +135,7 @@ header {
 /* カルーセル全体 */
 .carousel {
   width: 100%;
-  overflow: hidden; /* ← もうスクロールバー不要 */
+  overflow: hidden; /* ← スクロールバー不要 */
   cursor: grab;
 }
 
