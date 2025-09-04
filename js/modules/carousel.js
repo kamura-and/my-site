@@ -1,14 +1,22 @@
 // carousel.js
+let menuOpenFunc;
+
+export function setMenuOpenFunction(fn) {
+  menuOpenFunc = fn;
+}
+
 export function initCarousel() {
   const carousel = document.querySelector('.carousel');
   const track = document.querySelector('.carousel-track');
-
   if (!carousel || !track) return;
 
+  // 複製で無限ループ
   track.innerHTML += track.innerHTML;
-  const items = document.querySelectorAll('.carousel-item');
-  const itemWidth = items[0].offsetWidth + 10;
-  const totalWidth = itemWidth * items.length;
+
+  // 画像ロード後に幅を取得
+  const items = track.querySelectorAll('.carousel-item');
+  let itemWidth = items[0].offsetWidth + 10;
+  let totalWidth = itemWidth * items.length;
 
   let isDown = false;
   let startX;
@@ -48,7 +56,7 @@ export function initCarousel() {
   }, { passive: false });
 
   function animate() {
-    if (!isDown) {
+    if (!isDown && !(menuOpenFunc && menuOpenFunc())) {
       currentX -= autoSpeed + velocity;
       velocity *= friction;
     }
@@ -59,5 +67,11 @@ export function initCarousel() {
     track.style.transform = `translateX(${currentX}px)`;
     requestAnimationFrame(animate);
   }
-  animate();
+
+  // 画像ロード後に初期化
+  window.addEventListener('load', () => {
+    itemWidth = items[0].offsetWidth + 10;
+    totalWidth = itemWidth * items.length;
+    animate();
+  });
 }
