@@ -1,14 +1,10 @@
-import { $ } from './utils.js';
-
+// form.js
 export function initForm() {
-  const form = $("form");
-  if (!form) return; // フォームがないページは無視
+  const form = document.querySelector('form');
+  if (!form) return;
 
-  form.addEventListener("submit", (e) => {
-    const email = $("input[name='email']").value;
-    if (!email.includes("@")) {
-      e.preventDefault();
-      alert("メールアドレスが不正です");
-    }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("送信完了（Ajaxやバリデーションを追加可能）");
   });
 }

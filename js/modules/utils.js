@@ -1,8 +1,7 @@
-// 汎用関数をエクスポート
+// utils.js
 export function $(selector) {
   return document.querySelector(selector);
 }
-
 export function $all(selector) {
   return document.querySelectorAll(selector);
 }
