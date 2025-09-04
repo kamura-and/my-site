@@ -138,7 +138,7 @@ header {
 /* カルーセル全体 */
 .carousel {
   width: 100%;
-  overflow: hidden; /* ← スクロールバー不要 */
+  overflow: hidden; /* ← もうスクロールバー不要 */
   cursor: grab;
 }
 
