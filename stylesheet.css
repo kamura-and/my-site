@@ -1,13 +1,17 @@
 @charset "UTF-8";
 
-/* ALL */
+/* ----------------------
+   全体共通
+------------------------*/
 html {
   font-size: 100%;
 }
 
 body {
   line-height: 1.7;
-  color: #432;
+  color: #765297;
+  margin: 0;
+  font-family: "WDXL Lubrifont JP N";
 }
 
 a {
@@ -16,76 +20,124 @@ a {
 
 img {
   max-width: 100%;
+  display: block;
 }
 
-/* header */
+/* ----------------------
+   header & logo
+------------------------*/
 header {
   background-color: rgb(194, 194, 194);
-}
-
-.page-header .wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 4%;
-}
-
-.logo{
-  margin: 10px;
-  max-height: 100px;
+  position: relative;
 }
 
 .logo-all {
   display: flex;
   justify-content: center;
-  height: 90px;
+  height: 120px;
+}
+
+.logo {
+  max-height: 100px;
+  margin: 10px;
+}
+
+/* ----------------------
+   nav & ハンバーガー
+------------------------*/
+#navArea nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  bottom: 0;
+  width: 250px;
+  background: rgb(194, 194, 194);
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 3;
+}
+
+#navArea.open nav {
+  left: 0;
+  opacity: 1;
 }
 
 .main-nav {
-  font-family: "WDXL Lubrifont JP N";
-  font-weight: 800;
-  letter-spacing: 0.3rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  margin: 0 20px 0 0;
-  padding: 0 0 8px 0;
+  display: block;
+  padding: 25px;
   list-style: none;
-  display: flex;
-  justify-content: flex-end;
+  text-decoration: none;
+  color: #765297;
 }
 
-.main-nav li {
-  margin-left: 20px;
-  font-weight: 500;
+.main-nav ul{
+  margin: 0;
+  padding: 0;
 }
 
-.main-nav a {
-  color: rgb(144, 88, 146);
+.main-nav a:hover{
+  color: rgb(255, 255, 255);
 }
 
-.main-nav a:hover {
-  color: rgb(238, 238, 238);
+.toggle_btn {
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 4;
+  transition: all 0.3s;
 }
 
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #333;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
 
+.toggle_btn span:nth-child(1) { top: 4px; }
+.toggle_btn span:nth-child(2) { top: 14px; }
+.toggle_btn span:nth-child(3) { bottom: 4px; }
 
+#mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+  z-index: 2;
+  cursor: pointer;
+}
 
-/* home */
+#navArea.open + #mask,
+.open #mask {
+  display: block;
+}
+
+/* ----------------------
+   homeコンテンツ
+------------------------*/
 .home-content {
   text-align: center;
-  margin-top: 15%;
-  margin-bottom: 15%;
+  margin: 15% 0;
 }
 
-.home-content p {
+.home-content p.kamura-logo {
   font-size: 1.125rem;
   font-family: "WDXL Lubrifont JP N";
   letter-spacing: 0.5rem;
   color: #fff;
-}
-
-/* 見出し */
-.kamura-logo{
-  line-height: 0;
+  line-height: 1;
   margin: 0;
 }
 
@@ -100,13 +152,10 @@ header {
   background: linear-gradient(45deg, rgb(147, 68, 150), #a4c9ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: rgb(112, 69, 109);
 }
 
-/* ボタン */
 .button {
   font-size: 0.8rem;
   color: #fff;
@@ -115,46 +164,199 @@ header {
   font-family: "WDXL Lubrifont JP N";
   letter-spacing: 0.3rem;
   background: linear-gradient(45deg, rgb(147, 68, 150), #a4c9ff);
+  display: inline-block;
+  margin-top: 15px;
 }
 
-.button:hover {
+.button:hover{
   background: rgb(238, 238, 238);
   color: rgb(144, 88, 146);
   font-weight: 500;
 }
 
-/* 背景画像大 */
-#home {
-  background-image: url(back_01.webp);
+/* ----------------------
+   背景大画像
+------------------------*/
+body {
+  background-image: url("back_01.webp"); 
   min-height: 100vh;
   background-repeat: repeat;
-  background-position: 0 0;
-  background-size: 50px;
-  background-color: #e2e2e2;
-  background-blend-mode: multiply;
+  background-size: 60px;
+  background-position: center;
+  background-color: #e2e2e2; /* 画像が読み込めない場合の色 */
+  /* background-blend-mode: multiply; */ /* 必要なら後で戻す */
 }
 
-#home .page-title {
-  text-transform: none;
-}
 
-/* カルーセル全体 */
+/* ----------------------
+   カルーセル
+------------------------*/
 .carousel {
   width: 100%;
-  overflow: hidden; /* ← もうスクロールバー不要 */
+  overflow: hidden;
   cursor: grab;
+  margin: 20px auto;
 }
 
 .carousel-track {
   display: flex;
-  will-change: transform; /* iOSでスムーズにする最適化 */
-  transition: none;       /* JS制御なのでCSSトランジション不要 */
+  transition: none;
+  will-change: transform;
 }
 
 .carousel-item {
-  flex: 0 0 200px; /* アイテム幅固定 */
-  max-width: 40%;
-  display: inline-block;
+  flex: 0 0 auto;
+  width: 20%;
   margin-right: 10px;
   filter: drop-shadow(5px 5px 0 #765297);
+}
+
+/* ----------------------
+   ギャラリー
+------------------------*/
+.GALLERY {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #e2e2e2;
+}
+
+.banner-gallery {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: "WDXL Lubrifont JP N";
+  letter-spacing: 0.3rem;
+  text-shadow: 4px 4px 0 #75ff69;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: linear-gradient(45deg, rgb(147, 68, 150), #a4c9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: rgb(112, 69, 109);
+}
+
+.gallery-carousel {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-images {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-image {
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  padding: 15px;
+  gap: 10px;
+  background: #f8f9fa;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail:hover {
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* ギャラリー制御 */
+#gallery1:checked ~ .gallery-main .gallery-images { transform: translateX(0%); }
+#gallery2:checked ~ .gallery-main .gallery-images { transform: translateX(-25%); }
+#gallery3:checked ~ .gallery-main .gallery-images { transform: translateX(-50%); }
+#gallery4:checked ~ .gallery-main .gallery-images { transform: translateX(-75%); }
+
+#gallery1:checked ~ .gallery-thumbnails label[for="gallery1"],
+#gallery2:checked ~ .gallery-thumbnails label[for="gallery2"],
+#gallery3:checked ~ .gallery-thumbnails label[for="gallery3"],
+#gallery4:checked ~ .gallery-thumbnails label[for="gallery4"] {
+  border-color: #d8d8d8;
+  box-shadow: 0 4px 12px rgba(177, 60, 231, 0.3);
+}
+
+/* ----------------------
+   SP / PC対応
+------------------------*/
+@media screen and (max-width: 768px) {
+  #navArea nav{
+    width: 220px;
+    left: -220px;
+  }
+
+  .carousel-item { width: 40%; }
+}
+
+@media screen and (min-width: 769px) {
+  #navArea nav {
+    position: relative;
+    left: 0;
+    opacity: 1;
+    width: auto;
+  }
+
+  /* ナビゲーションを横並び */
+  .main-nav {
+    display: flex;         /* ← 横並びにする */
+    gap: 30px;             /* ← 各リンクの間隔 */
+    padding: 5px 0;
+    margin: 0 20px 0px 0px;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .main-nav li {
+    list-style: none;
+  }
+
+  .main-nav a {
+    color: #765297;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .main-nav a:hover {
+    color: #fff;
+  }
+
+  /* ハンバーガーとマスクは非表示 */
+  .toggle_btn,
+  #mask {
+    display: none !important;
+  }
 }
